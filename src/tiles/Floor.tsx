@@ -1,8 +1,8 @@
-import tile from "../assets/tiles/tile.png";
+import floor from "../assets/tiles/floor.png";
 
 export default class Floor {
   html() {
-    return <img src={tile} alt='tile'/>
+    return <img src={floor} alt='floor'/>
   }
 
   canBeEntered() {

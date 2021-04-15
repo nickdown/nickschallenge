@@ -1,24 +1,80 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { useState, useEffect } from 'react';
+import { playerDown, playerUp, playerLeft, playerRight } from './assets/player'
+import Level1 from './levels/Level1'
+
+const tiles = Level1.getLayout()
 
 function App() {
+  const [chip, setChip] = useState({row: 1, col: 1})
+  const [chipImage, setChipImage] = useState(playerDown)
+
+  const generateCell = (rowIndex: number, colIndex: number, chip: { row: any; col: any; }) => {
+    const html = tiles[rowIndex][colIndex].html()
+
+    let chipHtml
+    if (chip.row === rowIndex && chip.col === colIndex) {
+      chipHtml = <img src={chipImage} alt="player-down"/>
+    }
+
+    return <div>{chipHtml ?? html}</div>
+  }
+
+  useEffect(() => {
+    function updateGame(event: KeyboardEvent) {
+      const nextPosition = {...chip}
+      switch (event.code) {
+        case 'ArrowLeft':
+          setChipImage(playerLeft)
+          nextPosition.col = nextPosition.col - 1
+          break;
+        case 'ArrowRight':
+          setChipImage(playerRight)
+          nextPosition.col = nextPosition.col + 1
+          break;
+        case 'ArrowDown':
+          setChipImage(playerDown)
+          nextPosition.row = nextPosition.row + 1
+          break;
+        case 'ArrowUp':
+          setChipImage(playerUp)
+          nextPosition.row = nextPosition.row - 1
+          break;
+        default:
+          return
+      }
+
+      let tile
+      try {
+        tile = tiles[nextPosition.row][nextPosition.col]
+      } catch (e) {
+        return
+      }
+
+      if (!tile) {
+        return
+      }
+
+      if (!tile.canBeEntered()) {
+        return
+      }
+
+      setChip(nextPosition)
+    }
+
+    document.addEventListener('keyup', updateGame)
+    return () => {
+      document.removeEventListener('keyup', updateGame);
+    }
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id='app'>
+      {tiles.map((row, rowIndex) => {
+        return row.map((cell, colIndex) => {
+          return generateCell(rowIndex, colIndex, chip)
+        })
+      })}
     </div>
   );
 }
