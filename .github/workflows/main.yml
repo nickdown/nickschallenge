@@ -58,4 +58,4 @@ jobs:
       - name: Invalidate Cloudfront CDN
         run: aws cloudfront create-invalidation --distribution-id=$CLOUDFRONT_DISTRIBUTION_ID --paths '/*'
         env:
-          CLOUDFRONT_DISTRIBUTION_ID: TBD
+          CLOUDFRONT_DISTRIBUTION_ID: E1XPV7IYK3X12P
