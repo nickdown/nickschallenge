@@ -2,7 +2,7 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import { playerDown, playerUp, playerLeft, playerRight } from './assets/player'
 import Level1 from './levels/Level1'
-import { Chip, Floor } from './tiles'
+import { Chip, ChipDoor, Floor } from './tiles'
 
 const tiles = Level1.getLayout()
 
@@ -57,12 +57,16 @@ function App() {
         return
       }
 
-      if (!tile.canBeEntered()) {
+      if (!tile.canBeEntered(numberOfChips)) {
         return
       }
 
       if (tile instanceof Chip) {
         setNumberOfChip((numberOfChips) => numberOfChips + 1)
+        tiles[nextPosition.row][nextPosition.col] = new Floor()
+      }
+
+      if (tile instanceof ChipDoor) {
         tiles[nextPosition.row][nextPosition.col] = new Floor()
       }
 
