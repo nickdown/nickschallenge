@@ -1,5 +1,6 @@
 import Floor from "./Floor";
 import wall from "../assets/tiles/wall.png";
+import IllegalMoveError from '../errors/IllegalMoveError'
 
 export default class Wall extends Floor {
   html() {
@@ -8,5 +9,9 @@ export default class Wall extends Floor {
 
   canBeEntered() {
     return false
+  }
+
+  enter() {
+    throw new IllegalMoveError()
   }
 }
