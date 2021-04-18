@@ -53,7 +53,7 @@ jobs:
           aws-region: us-east-2
 
       - name: Deploy to S3 Bucket
-        run: aws s3 sync ./ s3://pianopractice-brigadeirolabs --acl public-read --delete
+        run: aws s3 sync ./ s3://nickschallenge.nickdown --acl public-read --delete
 
       - name: Invalidate Cloudfront CDN
         run: aws cloudfront create-invalidation --distribution-id=$CLOUDFRONT_DISTRIBUTION_ID --paths '/*'
