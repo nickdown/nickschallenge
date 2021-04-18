@@ -1,7 +1,7 @@
-import { Cell } from './index'
+import { Floor } from './index'
 
 test('can be entered', () => {
-  const cell = new Cell()
+  const floor = new Floor()
 
-  expect(cell.canBeEntered()).toBe(true)
+  expect(floor.canBeEntered()).toBe(true)
 });
