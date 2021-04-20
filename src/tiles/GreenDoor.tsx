@@ -5,7 +5,7 @@ export default class GreenDoor {
     return <img src={greenDoor} alt='green door'/>
   }
 
-  canBeEntered(numberOfChips = 0) {
-    return numberOfChips === 4
+  canBeEntered() {
+    return true
   }
 }

@@ -5,7 +5,7 @@ export default class YellowDoor {
     return <img src={yellowDoor} alt='yellow door'/>
   }
 
-  canBeEntered(numberOfChips = 0) {
-    return numberOfChips === 4
+  canBeEntered() {
+    return true
   }
 }
