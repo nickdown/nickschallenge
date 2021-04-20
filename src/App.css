@@ -1,7 +1,7 @@
 #board {
   display: grid;
-  grid-template-columns: repeat(10, 32px);
-  grid-template-rows: repeat(10, 32px);
+  grid-template-columns: repeat(17, 32px);
+  grid-template-rows: repeat(16, 32px);
   margin: 3px;
 }
 

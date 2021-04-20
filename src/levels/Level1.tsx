@@ -1,31 +1,51 @@
 import { Floor, Wall, Chip, ChipDoor } from '../tiles'
+import GreenDoor from "../tiles/GreenDoor";
+import BlueDoor from "../tiles/BlueDoor";
+import RedDoor from "../tiles/RedDoor";
+import YellowDoor from "../tiles/YellowDoor";
+import Gate from "../tiles/Gate";
 
-const layout = [
-  [ 'Wall', 'Wall', 'Wall', 'Wall', 'Wall', 'Wall', 'Wall', 'Wall', 'Wall', 'Wall' ],
-  [ 'Wall', 'Floor', 'Floor', 'Floor', 'Floor', 'Floor', 'Floor', 'Floor', 'Floor', 'Wall' ],
-  [ 'Wall', 'Floor', 'Floor', 'Floor', 'Floor', 'Chip', 'Floor', 'Floor', 'Floor', 'Wall' ],
-  [ 'Wall', 'Floor', 'Floor', 'Wall', 'Wall', 'Wall', 'Wall', 'Floor', 'Floor', 'Wall' ],
-  [ 'Wall', 'Floor', 'Floor', 'Wall', 'Floor', 'Floor', 'Wall', 'Floor', 'Floor', 'Wall' ],
-  [ 'Wall', 'Chip', 'Floor', 'Wall', 'Floor', 'Floor', 'Wall', 'Floor', 'Floor', 'Wall' ],
-  [ 'Wall', 'Floor', 'Floor', 'Wall', 'Wall', 'ChipDoor', 'Wall', 'Floor', 'Floor', 'Wall' ],
-  [ 'Wall', 'Floor', 'Floor', 'Floor', 'Floor', 'Floor', 'Floor', 'Floor', 'Chip', 'Wall' ],
-  [ 'Wall', 'Floor', 'Floor', 'Chip', 'Floor', 'Floor', 'Floor', 'Floor', 'Floor', 'Wall' ],
-  [ 'Wall', 'Wall', 'Wall', 'Wall', 'Wall', 'Wall', 'Wall', 'Wall', 'Wall', 'Wall' ]
+const level1 = [
+  ['F','F','F','F','F','F','F','F','F','F','F','F','F','F','F','F','F'],
+  ['F','F','F','W','W','W','W','W','F','W','W','W','W','W','F','F','F'],
+  ['F','F','F','W','F','F','F','W','W','W','F','F','F','W','F','F','F'],
+  ['F','F','F','W','F','C','F','W','Z','W','F','C','F','W','F','F','F'],
+  ['F','W','W','W','W','W','G','W','D','W','G','W','W','W','W','W','F'],
+  ['F','W','F','F','F','B','F','F','F','F','F','R','F','F','F','W','F'],
+  ['F','W','F','C','F','W','F','F','F','F','F','W','F','C','F','W','F'],
+  ['F','W','W','W','W','W','C','F','F','F','C','W','W','W','W','W','F'],
+  ['F','W','F','C','F','W','F','F','F','F','F','W','F','C','F','W','F'],
+  ['F','W','F','F','F','R','F','F','C','F','F','B','F','F','F','W','F'],
+  ['F','W','W','W','W','W','W','Y','W','Y','W','W','W','W','W','W','F'],
+  ['F','F','F','F','F','W','F','F','W','F','F','W','F','F','F','F','F'],
+  ['F','F','F','F','F','W','F','C','W','C','F','W','F','F','F','F','F'],
+  ['F','F','F','F','F','W','F','F','W','F','F','W','F','F','F','F','F'],
+  ['F','F','F','F','F','W','W','W','W','W','W','W','F','F','F','F','F'],
+  ['F','F','F','F','F','F','F','F','F','F','F','F','F','F','F','F','F'],
 ]
-
 export default class Level1 {
   static getLayout() {
-    return layout.map((row:string[]) => {
+    return level1.map((row:string[]) => {
       return row.map((cell:string) => {
         switch (cell) {
-          case 'Wall':
+          case 'W':
             return new Wall()
-          case 'Floor':
+          case 'F':
             return new Floor()
-          case 'Chip':
+          case 'C':
             return new Chip()
-          case 'ChipDoor':
+          case 'D':
             return new ChipDoor()
+          case 'G':
+            return new GreenDoor()
+          case 'B':
+            return new BlueDoor()
+          case 'R':
+            return new RedDoor()
+          case 'Y':
+            return new YellowDoor();
+          case 'Z':
+            return new Gate();
           default:
             throw new Error('Tile type not found')
         }

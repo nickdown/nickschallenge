@@ -7,7 +7,7 @@ import { Chip, ChipDoor, Floor } from './tiles'
 const tiles = Level1.getLayout()
 
 function App() {
-  const [chip, setChip] = useState({row: 1, col: 1})
+  const [chip, setChip] = useState({row: 7, col: 8})
   const [chipImage, setChipImage] = useState(playerDown)
   const [numberOfChips, setNumberOfChip] = useState(0)
 
