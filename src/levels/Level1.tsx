@@ -4,6 +4,10 @@ import BlueDoor from "../tiles/BlueDoor";
 import RedDoor from "../tiles/RedDoor";
 import YellowDoor from "../tiles/YellowDoor";
 import Gate from "../tiles/Gate";
+import GreenKey from "../tiles/GreenKey";
+import BlueKey from "../tiles/BlueKey";
+import RedKey from "../tiles/RedKey";
+import YellowKey from "../tiles/YellowKey";
 
 const level1 = [
   ['F','F','F','F','F','F','F','F','F','F','F','F','F','F','F','F','F'],
@@ -11,15 +15,15 @@ const level1 = [
   ['F','F','F','W','F','F','F','W','W','W','F','F','F','W','F','F','F'],
   ['F','F','F','W','F','C','F','W','Z','W','F','C','F','W','F','F','F'],
   ['F','W','W','W','W','W','G','W','D','W','G','W','W','W','W','W','F'],
-  ['F','W','F','F','F','B','F','F','F','F','F','R','F','F','F','W','F'],
-  ['F','W','F','C','F','W','F','F','F','F','F','W','F','C','F','W','F'],
+  ['F','W','F','y','F','B','F','F','F','F','F','R','F','y','F','W','F'],
+  ['F','W','F','C','F','W','b','F','F','F','r','W','F','C','F','W','F'],
   ['F','W','W','W','W','W','C','F','F','F','C','W','W','W','W','W','F'],
-  ['F','W','F','C','F','W','F','F','F','F','F','W','F','C','F','W','F'],
+  ['F','W','F','C','F','W','b','F','F','F','r','W','F','C','F','W','F'],
   ['F','W','F','F','F','R','F','F','C','F','F','B','F','F','F','W','F'],
   ['F','W','W','W','W','W','W','Y','W','Y','W','W','W','W','W','W','F'],
   ['F','F','F','F','F','W','F','F','W','F','F','W','F','F','F','F','F'],
   ['F','F','F','F','F','W','F','C','W','C','F','W','F','F','F','F','F'],
-  ['F','F','F','F','F','W','F','F','W','F','F','W','F','F','F','F','F'],
+  ['F','F','F','F','F','W','F','F','W','g','F','W','F','F','F','F','F'],
   ['F','F','F','F','F','W','W','W','W','W','W','W','F','F','F','F','F'],
   ['F','F','F','F','F','F','F','F','F','F','F','F','F','F','F','F','F'],
 ]
@@ -44,6 +48,14 @@ export default class Level1 {
             return new RedDoor()
           case 'Y':
             return new YellowDoor();
+          case 'g':
+            return new GreenKey()
+          case 'b':
+            return new BlueKey()
+          case 'r':
+            return new RedKey()
+          case 'y':
+            return new YellowKey();
           case 'Z':
             return new Gate();
           default:
