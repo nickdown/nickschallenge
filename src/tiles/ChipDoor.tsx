@@ -6,6 +6,6 @@ export default class ChipDoor {
   }
 
   canBeEntered(numberOfChips = 0) {
-    return numberOfChips === 4
+    return numberOfChips >= 11
   }
 }
