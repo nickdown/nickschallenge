@@ -1,4 +1,4 @@
-import yellowKey from "../assets/tiles/yellowKey.png";
+import yellowKey from "../../assets/tiles/yellowKey.png";
 
 export default class YellowKey {
   html() {

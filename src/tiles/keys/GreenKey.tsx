@@ -1,4 +1,4 @@
-import greenKey from "../assets/tiles/greenKey.png";
+import greenKey from "../../assets/tiles/greenKey.png";
 
 export default class GreenKey {
   html() {

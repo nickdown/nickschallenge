@@ -1,4 +1,4 @@
-import blueKey from "../assets/tiles/blueKey.png";
+import blueKey from "../../assets/tiles/blueKey.png";
 
 export default class BlueKey {
   html() {

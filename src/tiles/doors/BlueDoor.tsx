@@ -1,4 +1,4 @@
-import blueDoor from "../assets/tiles/blueDoor.png";
+import blueDoor from "../../assets/tiles/blueDoor.png";
 
 export default class BlueDoor {
   html() {

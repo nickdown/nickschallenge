@@ -1,13 +1,13 @@
 import { Floor, Wall, Chip, ChipDoor } from '../tiles'
-import GreenDoor from "../tiles/GreenDoor";
-import BlueDoor from "../tiles/BlueDoor";
-import RedDoor from "../tiles/RedDoor";
-import YellowDoor from "../tiles/YellowDoor";
-import Gate from "../tiles/Gate";
-import GreenKey from "../tiles/GreenKey";
-import BlueKey from "../tiles/BlueKey";
-import RedKey from "../tiles/RedKey";
-import YellowKey from "../tiles/YellowKey";
+import GreenDoor from "../tiles/doors/GreenDoor";
+import BlueDoor from "../tiles/doors/BlueDoor";
+import RedDoor from "../tiles/doors/RedDoor";
+import YellowDoor from "../tiles/doors/YellowDoor";
+import Finish from "../tiles/Finish";
+import GreenKey from "../tiles/keys/GreenKey";
+import BlueKey from "../tiles/keys/BlueKey";
+import RedKey from "../tiles/keys/RedKey";
+import YellowKey from "../tiles/keys/YellowKey";
 
 const level1 = [
   ['F','F','F','F','F','F','F','F','F','F','F','F','F','F','F','F','F'],
@@ -57,7 +57,7 @@ export default class Level1 {
           case 'y':
             return new YellowKey();
           case 'Z':
-            return new Gate();
+            return new Finish();
           default:
             throw new Error('Tile type not found')
         }

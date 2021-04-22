@@ -11,37 +11,21 @@ function App() {
   const [chip, setChip] = useState({row: 7, col: 8})
   const [chipImage, setChipImage] = useState(playerDown)
   const [numberOfChips, setNumberOfChips] = useState(0)
-  const [keys, setKeys] = useState({
-    red: 0,
-    green: 0,
-    blue: 0,
-    yellow: 0
-  })
+  const [numberOfChipsRequired, setNumberOfChipsRequired] = useState(11)
+  const [keys, setKeys] = useState({ red: 0, green: 0, blue: 0, yellow: 0 })
 
-  const getters = {
-    chip,
-    chipImage,
-    numberOfChips,
-    keys
-  }
-
-  const setters = {
-    setChip,
-    setChipImage,
-    setNumberOfChips,
-    setKeys
-  }
+  const getters = { chip, chipImage, numberOfChips, keys, numberOfChipsRequired }
+  const setters = { setChip, setChipImage, setNumberOfChips, setKeys, setNumberOfChipsRequired }
 
 
-  const generateCell = (rowIndex: number, colIndex: number, chip: { row: any; col: any; }) => {
-    const html = tiles[rowIndex][colIndex].html()
-
-    let chipHtml
+  const generateCell = (rowIndex: number, colIndex: number, chip: { row: number; col: number; }) => {
     if (chip.row === rowIndex && chip.col === colIndex) {
-      chipHtml = <img src={chipImage} alt="player-down"/>
+      return <img src={ chipImage } alt="player-down"/>
     }
 
-    return <div>{chipHtml ?? html}</div>
+    const html = tiles[rowIndex][colIndex].html()
+
+    return <div>{ html}</div>
   }
 
   useEffect(() => {
@@ -68,12 +52,8 @@ function App() {
           return
       }
 
-      let tile
       try {
-        tile = tiles[nextPosition.row][nextPosition.col]
-        if (!tile) {
-          return
-        }
+        const tile = tiles[nextPosition.row][nextPosition.col]
         tile.enter(getters, setters)
       } catch (e) {
         return

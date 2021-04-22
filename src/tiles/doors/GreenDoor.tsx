@@ -1,4 +1,4 @@
-import greenDoor from "../assets/tiles/greenDoor.png";
+import greenDoor from "../../assets/tiles/greenDoor.png";
 
 export default class GreenDoor {
   html() {

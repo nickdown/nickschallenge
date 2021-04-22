@@ -1,4 +1,4 @@
-import redKey from "../assets/tiles/redKey.png";
+import redKey from "../../assets/tiles/redKey.png";
 
 export default class RedKey {
   html() {

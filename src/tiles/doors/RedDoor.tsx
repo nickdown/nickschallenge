@@ -1,4 +1,4 @@
-import redDoor from "../assets/tiles/redDoor.png";
+import redDoor from "../../assets/tiles/redDoor.png";
 
 export default class RedDoor {
   html() {
