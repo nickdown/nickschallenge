@@ -20,12 +20,10 @@ function App() {
 
   const generateCell = (rowIndex: number, colIndex: number, chip: { row: number; col: number; }) => {
     if (chip.row === rowIndex && chip.col === colIndex) {
-      return <img src={ chipImage } alt="player-down"/>
+      return <img src={ chipImage } alt=''/>
     }
 
-    const html = tiles[rowIndex][colIndex].html()
-
-    return <div>{ html}</div>
+    return tiles[rowIndex][colIndex].html()
   }
 
   useEffect(() => {
@@ -34,18 +32,31 @@ function App() {
       switch (event.code) {
         case 'ArrowLeft':
           setChipImage(playerLeft)
-          nextPosition.col = nextPosition.col - 1
           break;
         case 'ArrowRight':
           setChipImage(playerRight)
-          nextPosition.col = nextPosition.col + 1
           break;
         case 'ArrowDown':
           setChipImage(playerDown)
-          nextPosition.row = nextPosition.row + 1
           break;
         case 'ArrowUp':
           setChipImage(playerUp)
+          break;
+        default:
+          return
+      }
+
+      switch (event.code) {
+        case 'ArrowLeft':
+          nextPosition.col = nextPosition.col - 1
+          break;
+        case 'ArrowRight':
+          nextPosition.col = nextPosition.col + 1
+          break;
+        case 'ArrowDown':
+          nextPosition.row = nextPosition.row + 1
+          break;
+        case 'ArrowUp':
           nextPosition.row = nextPosition.row - 1
           break;
         default:
