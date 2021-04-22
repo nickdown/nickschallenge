@@ -1,12 +1,12 @@
 import greenDoor from "../../assets/tiles/greenDoor.png";
+import AbstractDoor from './AbstractDoor'
 
-export default class GreenDoor {
-  html() {
-    return <img src={greenDoor} alt='green door'/>
-  }
+export default class GreenDoor extends AbstractDoor{
+  image = greenDoor
+  color = 'green'
 
   enter(getters, setters) {
-    if (!getters.keys.green) {
+    if (!getters.keys[this.color]) {
       throw new Error()
     }
   }

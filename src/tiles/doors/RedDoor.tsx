@@ -1,16 +1,7 @@
 import redDoor from "../../assets/tiles/redDoor.png";
+import AbstractDoor from './AbstractDoor'
 
-export default class RedDoor {
-  html() {
-    return <img src={redDoor} alt='red door'/>
-  }
-
-  enter (getters, setters) {
-    if (!getters.keys.red) {
-      throw new Error()
-    }
-    setters.setKeys((prev) => {
-      return { ...prev, red: prev.red - 1}
-    })
-  }
+export default class RedDoor extends AbstractDoor {
+  image = redDoor
+  color = 'red'
 }

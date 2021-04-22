@@ -1,17 +1,8 @@
 import blueDoor from "../../assets/tiles/blueDoor.png";
+import AbstractDoor from './AbstractDoor'
 
-export default class BlueDoor {
-  html() {
-    return <img src={blueDoor} alt='blue door'/>
-  }
+export default class BlueDoor extends AbstractDoor {
+  image = blueDoor
+  color = 'blue'
 
-  enter(getters, setters) {
-    if (!getters.keys.blue) {
-      throw new Error()
-    }
-
-    setters.setKeys((prev) => {
-      return { ...prev, blue: prev.blue - 1}
-    })
-  }
 }
