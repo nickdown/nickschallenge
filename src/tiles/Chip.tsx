@@ -5,7 +5,7 @@ export default class Chip {
     return <img src={chip} alt='chip'/>
   }
 
-  canBeEntered() {
-    return true
+  enter(getters, setters) {
+    setters.setNumberOfChips((numberOfChips) => numberOfChips + 1)
   }
 }

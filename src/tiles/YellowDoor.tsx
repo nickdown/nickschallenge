@@ -5,7 +5,12 @@ export default class YellowDoor {
     return <img src={yellowDoor} alt='yellow door'/>
   }
 
-  canBeEntered() {
-    return true
+  enter(getters, setters) {
+    if (!getters.keys.yellow) {
+      throw new Error()
+    }
+    setters.setKeys((prev) => {
+      return { ...prev, yellow: prev.yellow - 1}
+    })
   }
 }

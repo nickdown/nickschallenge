@@ -5,7 +5,13 @@ export default class BlueDoor {
     return <img src={blueDoor} alt='blue door'/>
   }
 
-  canBeEntered() {
-    return true
+  enter(getters, setters) {
+    if (!getters.keys.blue) {
+      throw new Error()
+    }
+
+    setters.setKeys((prev) => {
+      return { ...prev, blue: prev.blue - 1}
+    })
   }
 }

@@ -5,7 +5,9 @@ export default class RedKey {
     return <img src={redKey} alt='red key'/>
   }
 
-  canBeEntered() {
-    return true
+  enter(getters, setters) {
+    return setters.setKeys((prev) => {
+      return { ...prev, red: prev.red + 1}
+    })
   }
 }

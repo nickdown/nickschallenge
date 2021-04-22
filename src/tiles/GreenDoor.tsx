@@ -5,7 +5,9 @@ export default class GreenDoor {
     return <img src={greenDoor} alt='green door'/>
   }
 
-  canBeEntered() {
-    return true
+  enter(getters, setters) {
+    if (!getters.keys.green) {
+      throw new Error()
+    }
   }
 }

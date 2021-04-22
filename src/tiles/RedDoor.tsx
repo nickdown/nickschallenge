@@ -5,7 +5,12 @@ export default class RedDoor {
     return <img src={redDoor} alt='red door'/>
   }
 
-  canBeEntered() {
-    return true
+  enter (getters, setters) {
+    if (!getters.keys.red) {
+      throw new Error()
+    }
+    setters.setKeys((prev) => {
+      return { ...prev, red: prev.red - 1}
+    })
   }
 }

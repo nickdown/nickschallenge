@@ -5,7 +5,7 @@ export default class ChipDoor {
     return <img src={chipDoor} alt='chip door'/>
   }
 
-  canBeEntered(numberOfChips = 0) {
-    return numberOfChips >= 11
+  enter(getters, setters) {
+    return getters.numberOfChips >= 11
   }
 }
