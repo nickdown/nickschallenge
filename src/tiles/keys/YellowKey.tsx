@@ -1,13 +1,7 @@
 import yellowKey from "../../assets/tiles/yellowKey.png";
+import AbstractKey from './AbstractKey'
 
-export default class YellowKey {
-  html() {
-    return <img src={yellowKey} alt='yellow key'/>
-  }
-
-  enter(getters, setters) {
-    setters.setKeys((prev) => {
-      return { ...prev, yellow: prev.yellow + 1}
-    })
-  }
+export default class YellowKey extends AbstractKey{
+  image = yellowKey
+  color = 'yellow'
 }

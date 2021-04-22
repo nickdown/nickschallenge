@@ -1,13 +1,7 @@
 import blueKey from "../../assets/tiles/blueKey.png";
+import AbstractKey from './AbstractKey'
 
-export default class BlueKey {
-  html() {
-    return <img src={blueKey} alt='blue key'/>
-  }
-
-  enter(getters, setters) {
-    setters.setKeys((prev) => {
-      return { ...prev, blue: prev.blue + 1}
-    })
-  }
+export default class BlueKey extends AbstractKey {
+  image = blueKey
+  color = 'blue'
 }

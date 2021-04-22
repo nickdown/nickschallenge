@@ -1,13 +1,7 @@
 import greenKey from "../../assets/tiles/greenKey.png";
+import AbstractKey from './AbstractKey'
 
-export default class GreenKey {
-  html() {
-    return <img src={greenKey} alt='green key'/>
-  }
-
-  enter(getters, setters) {
-    setters.setKeys((prev) => {
-      return { ...prev, green: prev.green + 1}
-    })
-  }
+export default class GreenKey extends AbstractKey{
+  image = greenKey
+  color = 'green'
 }
