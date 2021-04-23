@@ -2,7 +2,6 @@ import './App.css';
 import { useState, useEffect } from 'react';
 
 import Level2 from './levels/Level2'
-import { Floor } from './tiles'
 import IPosition from './interfaces/IPosition'
 
 function getDirection(event: KeyboardEvent, playerDirection) {
@@ -65,12 +64,11 @@ function App() {
 
       try {
         const tile = tiles[nextPosition.row][nextPosition.col]
-        tile.enter(getters, setters)
+        tile.enter(getters, setters, nextPosition)
       } catch (e) {
         return
       }
 
-      tiles[nextPosition.row][nextPosition.col] = new Floor()
       setPlayerPosition(nextPosition)
     }
 
