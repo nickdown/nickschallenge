@@ -9,6 +9,10 @@ import RedKey from '../tiles/keys/RedKey'
 import YellowKey from '../tiles/keys/YellowKey'
 import Finish from '../tiles/Finish'
 import IPosition from '../interfaces/IPosition'
+import FastForwardUp from '../tiles/fastforwards/FastForwardUp'
+import FastForwardDown from '../tiles/fastforwards/FastForwardDown'
+import FastForwardLeft from '../tiles/fastforwards/FastForwardLeft'
+import FastForwardRight from '../tiles/fastforwards/FastForwardRight'
 
 export default abstract class AbstractLevel {
   abstract tilemap: string[][]
@@ -45,6 +49,14 @@ export default abstract class AbstractLevel {
             return new YellowKey();
           case 'Z':
             return new Finish();
+          case 'ffu':
+            return new FastForwardUp();
+          case 'ffd':
+            return new FastForwardDown();
+          case 'ffl':
+            return new FastForwardLeft();
+          case 'ffr':
+            return new FastForwardRight();
           default:
             throw new Error('Tile type not found')
         }

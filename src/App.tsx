@@ -1,24 +1,23 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import { playerDown, playerUp, playerLeft, playerRight } from './assets/player'
-import Level1 from './levels/Level1'
-import { Floor } from './tiles'
+
 import Level2 from './levels/Level2'
+import { Floor } from './tiles'
 import IPosition from './interfaces/IPosition'
 
-function updateChipImage(event: KeyboardEvent, setChipImage: any) {
+function updateChipDirection(event: KeyboardEvent, setPlayerDirection: any) {
   switch (event.code) {
     case 'ArrowLeft':
-      setChipImage(playerLeft)
+      setPlayerDirection('LEFT')
       break;
     case 'ArrowRight':
-      setChipImage(playerRight)
+      setPlayerDirection('RIGHT')
       break;
     case 'ArrowDown':
-      setChipImage(playerDown)
+      setPlayerDirection('DOWN')
       break;
     case 'ArrowUp':
-      setChipImage(playerUp)
+      setPlayerDirection('UP')
       break;
     default:
       break;
@@ -46,32 +45,25 @@ function calculateNextPosition(chip: { col: number; row: number }, event: Keyboa
   return nextPosition
 }
 
-const generateCell = (rowIndex: number, colIndex: number, getters, setters) => {
-  if (getters.playerPosition.row === rowIndex && getters.playerPosition.col === colIndex) {
-    return <img src={ getters.chipImage } alt=''/>
-  }
-
-  return getters.tiles[rowIndex][colIndex].html()
-}
-
 function App() {
+  type direction =  'UP' | 'DOWN' | 'LEFT' | 'RIGHT'
 
-  let currentLevel = new Level1()
+  let currentLevel = new Level2()
 
   const [level, setLevel] = useState(currentLevel)
   const [tiles, setTiles] = useState(level.getLayout())
   const [playerPosition, setPlayerPosition] = useState<IPosition>(level.startingPosition)
-  const [chipImage, setChipImage] = useState(playerDown)
+  const [chipDirection, setChipDirection] = useState<direction>('DOWN')
   const [numberOfChips, setNumberOfChips] = useState<number>(0)
   const [numberOfChipsRequired, setNumberOfChipsRequired] = useState<number>(level.requiredChips)
   const [keys, setKeys] = useState({ red: 0, green: 0, blue: 0, yellow: 0 })
 
-  const getters = { playerPosition, chipImage, numberOfChips, keys, numberOfChipsRequired, tiles }
-  const setters = { setPlayerPosition, setChipImage, setNumberOfChips, setKeys, setNumberOfChipsRequired, setTiles }
+  const getters = { playerPosition, chipDirection, numberOfChips, keys, numberOfChipsRequired, tiles }
+  const setters = { setPlayerPosition, setChipDirection, setNumberOfChips, setKeys, setNumberOfChipsRequired, setTiles }
 
   useEffect(() => {
     function updateGame(event: KeyboardEvent) {
-      updateChipImage(event, setChipImage)
+      updateChipDirection(event, setChipDirection)
       const nextPosition = calculateNextPosition(playerPosition, event)
 
       try {
@@ -96,7 +88,7 @@ function App() {
       <div id='board'>
         {tiles.map((row, rowIndex) => {
           return row.map((cell, colIndex) => {
-            return generateCell(rowIndex, colIndex, getters, setters)
+            return getters.tiles[rowIndex][colIndex].html(rowIndex, colIndex, getters)
           })
         })}
       </div>
