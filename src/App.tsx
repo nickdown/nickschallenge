@@ -5,22 +5,18 @@ import Level2 from './levels/Level2'
 import { Floor } from './tiles'
 import IPosition from './interfaces/IPosition'
 
-function updateChipDirection(event: KeyboardEvent, setPlayerDirection: any) {
+function getDirection(event: KeyboardEvent, playerDirection) {
   switch (event.code) {
     case 'ArrowLeft':
-      setPlayerDirection('LEFT')
-      break;
+      return 'LEFT'
     case 'ArrowRight':
-      setPlayerDirection('RIGHT')
-      break;
+      return 'RIGHT'
     case 'ArrowDown':
-      setPlayerDirection('DOWN')
-      break;
+      return 'DOWN'
     case 'ArrowUp':
-      setPlayerDirection('UP')
-      break;
+      return 'UP'
     default:
-      break;
+      return playerDirection;
   }
 }
 
@@ -64,7 +60,7 @@ function App() {
 
   useEffect(() => {
     function updateGame(event: KeyboardEvent) {
-      updateChipDirection(event, setChipDirection)
+      setChipDirection(getDirection(event, chipDirection))
       const nextPosition = calculateNextPosition(playerPosition, event)
 
       try {
