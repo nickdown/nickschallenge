@@ -57,9 +57,10 @@ function App() {
   const [numberOfChips, setNumberOfChips] = useState<number>(0)
   const [numberOfChipsRequired, setNumberOfChipsRequired] = useState<number>(level.requiredChips)
   const [keys, setKeys] = useState({ red: 0, green: 0, blue: 0, yellow: 0 })
+  const [shoes, setShoes] = useState({ flippers: false, suctionBoots: false, skates: false, fireBoots: false })
 
-  const getters = { playerPosition, chipDirection, numberOfChips, keys, numberOfChipsRequired, tiles }
-  const setters = { setPlayerPosition, setChipDirection, setNumberOfChips, setKeys, setNumberOfChipsRequired, setTiles }
+  const getters = { playerPosition, chipDirection, numberOfChips, keys, numberOfChipsRequired, tiles, shoes }
+  const setters = { setPlayerPosition, setChipDirection, setNumberOfChips, setKeys, setNumberOfChipsRequired, setTiles, setShoes }
 
   useEffect(() => {
     function updateGame(event: KeyboardEvent) {
@@ -94,6 +95,7 @@ function App() {
       </div>
       <div>Chips Collected: { numberOfChips }</div>
       <div>Keys Collected: { JSON.stringify(keys) }</div>
+      <div>Shoes Collected: { JSON.stringify(shoes) }</div>
     </div>
   );
 }
