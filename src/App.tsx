@@ -45,6 +45,7 @@ function App() {
 
   let currentLevel = new Level2()
 
+  // eslint-disable-next-line
   const [level, setLevel] = useState(currentLevel)
   const [tiles, setTiles] = useState(level.getLayout())
   const [playerPosition, setPlayerPosition] = useState<IPosition>(level.startingPosition)
