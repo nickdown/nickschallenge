@@ -1,4 +1,4 @@
-import redDoor from "../../assets/tiles/redDoor.png";
+import redDoor from "../../assets/tiles/doors/redDoor.png";
 import AbstractDoor from './AbstractDoor'
 
 export default class RedDoor extends AbstractDoor {

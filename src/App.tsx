@@ -3,9 +3,8 @@ import { useState, useEffect } from 'react';
 import { playerDown, playerUp, playerLeft, playerRight } from './assets/player'
 import Level1 from './levels/Level1'
 import { Floor } from './tiles'
-
-
-const tiles = Level1.getLayout()
+import Level2 from './levels/Level2'
+import IPosition from './interfaces/IPosition'
 
 function updateChipImage(event: KeyboardEvent, setChipImage: any) {
   switch (event.code) {
@@ -47,7 +46,7 @@ function calculateNextPosition(chip: { col: number; row: number }, event: Keyboa
   return nextPosition
 }
 
-const generateCell = (rowIndex: number, colIndex: number, chip: { row: number; col: number; }, chipImage: string) => {
+const generateCell = (rowIndex: number, colIndex: number, chip: { row: number; col: number; }, chipImage: string, tiles) => {
   if (chip.row === rowIndex && chip.col === colIndex) {
     return <img src={ chipImage } alt=''/>
   }
@@ -56,10 +55,15 @@ const generateCell = (rowIndex: number, colIndex: number, chip: { row: number; c
 }
 
 function App() {
-  const [playerPosition, setPlayerPosition] = useState({row: 7, col: 8})
+
+  let currentLevel = new Level1()
+
+  const [level, setLevel] = useState(currentLevel)
+  const [tiles, setTiles] = useState(level.getLayout())
+  const [playerPosition, setPlayerPosition] = useState<IPosition>(level.startingPosition)
   const [chipImage, setChipImage] = useState(playerDown)
-  const [numberOfChips, setNumberOfChips] = useState(0)
-  const [numberOfChipsRequired, setNumberOfChipsRequired] = useState(11)
+  const [numberOfChips, setNumberOfChips] = useState<number>(0)
+  const [numberOfChipsRequired, setNumberOfChipsRequired] = useState<number>(level.requiredChips)
   const [keys, setKeys] = useState({ red: 0, green: 0, blue: 0, yellow: 0 })
 
   const getters = { playerPosition, chipImage, numberOfChips, keys, numberOfChipsRequired }
@@ -92,14 +96,13 @@ function App() {
       <div id='board'>
         {tiles.map((row, rowIndex) => {
           return row.map((cell, colIndex) => {
-            return generateCell(rowIndex, colIndex, playerPosition, chipImage)
+            return generateCell(rowIndex, colIndex, playerPosition, chipImage, tiles)
           })
         })}
       </div>
       <div>Chips Collected: { numberOfChips }</div>
       <div>Keys Collected: { JSON.stringify(keys) }</div>
     </div>
-
   );
 }
 

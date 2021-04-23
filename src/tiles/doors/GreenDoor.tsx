@@ -1,4 +1,4 @@
-import greenDoor from "../../assets/tiles/greenDoor.png";
+import greenDoor from "../../assets/tiles/doors/greenDoor.png";
 import AbstractDoor from './AbstractDoor'
 
 export default class GreenDoor extends AbstractDoor{
