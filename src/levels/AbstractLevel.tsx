@@ -17,6 +17,7 @@ import Ice from '../tiles/ice/Ice'
 import IceTopLeft from '../tiles/ice/IceTopLeft'
 import IceBottomLeft from '../tiles/ice/IceBottomLeft'
 import Water from '../tiles/water/Water'
+import Fire from '../tiles/fire/Fire'
 
 export default abstract class AbstractLevel {
   abstract tilemap: string[][]
@@ -69,6 +70,8 @@ export default abstract class AbstractLevel {
             return new IceBottomLeft();
           case 'w':
             return new Water();
+          case 'f':
+            return new Fire();
           default:
             throw new Error('Tile type not found')
         }
