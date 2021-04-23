@@ -46,12 +46,12 @@ function calculateNextPosition(chip: { col: number; row: number }, event: Keyboa
   return nextPosition
 }
 
-const generateCell = (rowIndex: number, colIndex: number, chip: { row: number; col: number; }, chipImage: string, tiles) => {
-  if (chip.row === rowIndex && chip.col === colIndex) {
-    return <img src={ chipImage } alt=''/>
+const generateCell = (rowIndex: number, colIndex: number, getters, setters) => {
+  if (getters.playerPosition.row === rowIndex && getters.playerPosition.col === colIndex) {
+    return <img src={ getters.chipImage } alt=''/>
   }
 
-  return tiles[rowIndex][colIndex].html()
+  return getters.tiles[rowIndex][colIndex].html()
 }
 
 function App() {
@@ -66,8 +66,8 @@ function App() {
   const [numberOfChipsRequired, setNumberOfChipsRequired] = useState<number>(level.requiredChips)
   const [keys, setKeys] = useState({ red: 0, green: 0, blue: 0, yellow: 0 })
 
-  const getters = { playerPosition, chipImage, numberOfChips, keys, numberOfChipsRequired }
-  const setters = { setPlayerPosition, setChipImage, setNumberOfChips, setKeys, setNumberOfChipsRequired }
+  const getters = { playerPosition, chipImage, numberOfChips, keys, numberOfChipsRequired, tiles }
+  const setters = { setPlayerPosition, setChipImage, setNumberOfChips, setKeys, setNumberOfChipsRequired, setTiles }
 
   useEffect(() => {
     function updateGame(event: KeyboardEvent) {
@@ -96,7 +96,7 @@ function App() {
       <div id='board'>
         {tiles.map((row, rowIndex) => {
           return row.map((cell, colIndex) => {
-            return generateCell(rowIndex, colIndex, playerPosition, chipImage, tiles)
+            return generateCell(rowIndex, colIndex, getters, setters)
           })
         })}
       </div>
