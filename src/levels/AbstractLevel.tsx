@@ -16,6 +16,7 @@ import FastForwardRight from '../tiles/fastforwards/FastForwardRight'
 import Ice from '../tiles/ice/Ice'
 import IceTopLeft from '../tiles/ice/IceTopLeft'
 import IceBottomLeft from '../tiles/ice/IceBottomLeft'
+import Water from '../tiles/water/Water'
 
 export default abstract class AbstractLevel {
   abstract tilemap: string[][]
@@ -66,6 +67,8 @@ export default abstract class AbstractLevel {
             return new IceTopLeft();
           case 'ibl':
             return new IceBottomLeft();
+          case 'w':
+            return new Water();
           default:
             throw new Error('Tile type not found')
         }
