@@ -18,6 +18,10 @@ import IceTopLeft from '../tiles/ice/IceTopLeft'
 import IceBottomLeft from '../tiles/ice/IceBottomLeft'
 import Water from '../tiles/water/Water'
 import Fire from '../tiles/fire/Fire'
+import Skates from '../tiles/shoes/Skates'
+import FireBoots from '../tiles/shoes/FireBoots'
+import Flippers from '../tiles/shoes/Flippers'
+import SuctionBoots from '../tiles/shoes/SuctionBoots'
 
 export default abstract class AbstractLevel {
   abstract tilemap: string[][]
@@ -72,6 +76,14 @@ export default abstract class AbstractLevel {
             return new Water();
           case 'f':
             return new Fire();
+          case 'sk':
+            return new Skates();
+          case 'fb':
+            return new FireBoots();
+          case 'fl':
+            return new Flippers();
+          case 'sb':
+            return new SuctionBoots();
           default:
             throw new Error('Tile type not found')
         }
